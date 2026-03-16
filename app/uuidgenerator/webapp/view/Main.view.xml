@@ -1,0 +1,36 @@
+<mvc:View controllerName="uuidgenerator.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="_IDGenPage1" title="UUID Generator Tool">
+        <content>
+            <VBox id="_IDGenVBox" class="sapUiMediumMargin">
+                <HBox id="_IDGenHBox" alignItems="Center" class="sapUiSmallMarginBottom">
+                    <Label id="_IDGenLabel" text="No. of Records:" class="sapUiSmallMarginEnd" />
+                    <Input id="numInput" type="Number" width="150px" value="500" />
+                    <Button id="_IDGenButton" text="Generate UUIDs" type="Emphasized" press=".onGenerate" class="sapUiSmallMarginBegin" />
+                    <Button id="_IDGenButton1" icon="sap-icon://excel-attachment" text="Export to Excel" press=".onExport" class="sapUiSmallMarginBegin" />
+                </HBox>
+
+                <Table id="uuidTable" 
+                       items="{path: '/UUIDs', 
+                       sorter: { path: 'seqNo' }}" 
+                       growing="true" 
+                       growingThreshold="100">
+                    <columns>
+                        <Column id="_IDGenColumn" width="100px"><Text id="_IDGenText" text="Seq No" /></Column>
+                        <Column id="_IDGenColumn1"><Text id="_IDGenText1" text="Generated UUID" /></Column>
+
+                    </columns>
+                    <items>
+                        <ColumnListItem id="_IDGenColumnListItem">
+                            <cells>
+                                <Text id="_IDGenText2" text="{seqNo}" />
+                                <Text id="_IDGenText3" text="{generatedValue}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
